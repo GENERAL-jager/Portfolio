@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="John Irungu - IT Professional & System Programmer specializing in systems programming, network infrastructure, and workflow automation">
+    <title>John Irungu - IT Professional & System Programmer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4a9eff;
+            --bg-color: #0a0a0a;
+            --card-bg: #111;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #888;
+            --border-color: #222;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .logo {
+            font-weight: 600;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        section {
+            min-height: 100vh;
+            padding-top: 100px;
+            margin-bottom: 60px;
+            scroll-margin-top: 80px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .greeting {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .bio {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background-color: #1a1a1a;
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            border: 1px solid #333;
+        }
+
+        .experience-item {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .experience-company {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .experience-date {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .quote-section {
+            background-color: var(--card-bg);
+            border-left: 4px solid var(--primary-color);
+            padding: 30px;
+            margin: 60px 0;
+            border-radius: 4px;
+        }
+
+        .quote-text {
+            font-size: 20px;
+            font-style: italic;
+            color: #d0d0d0;
+            margin-bottom: 10px;
+        }
+
+        .quote-author {
+            font-size: 16px;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-link:hover {
+            color: #6bb5ff;
+        }
+
+        .contact-link::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .project-card, .quote-section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            section {
+                padding-top: 80px;
+            }
+            
+            .bio {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">John Irungu</div>
+            <div>
+                <a href="#about" class="active">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <div class="greeting">Hi, I'm</div>
+            <h1>John Mbuthia Irungu</h1>
+            <div class="bio">
+                I blend <span class="highlight">systems programming, network infrastructure, and workflow automation</span> to turn complex technical challenges into real-world solutions. 
+                I'm an IT Professional and System Programmer with over 2 years of experience, specializing in operating systems administration, database management, and n8n automation.
+            </div>
+            <div class="bio">
+                My work lives at the intersection of system-level programming and business operations. I build automated workflows, secure network infrastructures, and robust database systems 
+                that drive operational efficiency and reliability. My passion lies in understanding what's truly needed—not just executing what's told—and delivering solutions that make a tangible difference.
+            </div>
+            <div class="bio">
+                Today, I work mostly in Linux/Windows server environments, Python, n8n, and SQL. My current focus spans network security, system automation, and database optimization. 
+                Whether in enterprise infrastructure or workflow automation, my goal is the same: to take complex problems and engineer 
+                solutions that actually work. I adapt quickly, take feedback seriously, and have consistently been the reliable person teams count on when situations get uncertain.
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects & Expertise</h2>
+            
+            <div class="project-card">
+                <div class="project-title">Enterprise Network Infrastructure Management</div>
+                <div class="project-description">
+                    Designed and managed enterprise network infrastructure supporting 50+ users with high uptime reliability. Implemented comprehensive security protocols including firewall configurations, 
+                    VPN setups, and intrusion detection systems. Configured network switches, routers, and wireless access points optimizing performance across the organization. Applied systematic 
+                    troubleshooting methodologies to resolve complex connectivity issues, packet loss, and routing conflicts using protocol analysis tools.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">TCP/IP</span>
+                    <span class="tech-tag">Network Security</span>
+                    <span class="tech-tag">Firewall Configuration</span>
+                    <span class="tech-tag">VPN</span>
+                    <span class="tech-tag">VLAN</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Workflow Automation & System Integration</div>
+                <div class="project-description">
+                    Specialized in building automated workflows using n8n to streamline business processes and eliminate manual tasks. Developed API integrations connecting databases, 
+                    web services, and business applications to improve data flow and operational efficiency. Created custom automation scripts for system monitoring, report generation, 
+                    and notification systems. Built data synchronization workflows ensuring real-time accuracy across multiple platforms.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">n8n</span>
+                    <span class="tech-tag">API Integration</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">REST APIs</span>
+                    <span class="tech-tag">Webhooks</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Database Systems & Performance Optimization</div>
+                <div class="project-description">
+                    Designed and managed enterprise database systems ensuring data integrity, security, and optimal performance. Applied database normalization principles and indexing strategies 
+                    to optimize query performance and storage efficiency. Implemented comprehensive backup and recovery procedures, transaction management, and access control systems. 
+                    Developed complex SQL queries, stored procedures, and automated reporting systems for business intelligence.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">SQL Server</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">Database Design</span>
+                    <span class="tech-tag">Query Optimization</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Operating Systems Administration & Automation</div>
+                <div class="project-description">
+                    Administered Windows Server and Linux environments with expertise in system-level programming and automation. Developed custom system utilities and scripts to streamline 
+                    administrative tasks and improve operational efficiency. Managed user accounts, security policies, and system configurations across multiple platforms. Performed system 
+                    monitoring, performance tuning, and security hardening to maintain high availability and compliance.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Linux Administration</span>
+                    <span class="tech-tag">Windows Server</span>
+                    <span class="tech-tag">Shell Scripting</span>
+                    <span class="tech-tag">PowerShell</span>
+                    <span class="tech-tag">System Programming</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-section">
+            <div class="quote-text">
+                "I don't just do what's told, I understand what's needed. I care about delivering results that actually make a difference. I adapt quickly, 
+                I take feedback seriously, and I've always been the one person you can rely on when things get uncertain. I might not know everything yet, 
+                but I learn fast, and I'll make sure I grow with the team, not behind it."
+            </div>
+            <div class="quote-author">— My Professional Philosophy</div>
+        </div>
+
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-title">System & Network Administrator Intern</div>
+                <div class="experience-company">Quiver Lounge</div>
+                <div class="experience-date">September 2023 - December 2024</div>
+                <div class="experience-description">
+                    Managed enterprise network infrastructure and server environments with focus on reliability and security. Installed and configured Windows Server and Linux systems, 
+                    developed automation scripts, and administered user accounts across multiple platforms. Configured network switches, routers, and implemented comprehensive security 
+                    protocols including firewalls and VPNs. Supported database systems, created technical documentation, and provided advanced technical support resolving complex issues. 
+                    Maintained equipment inventory system and coordinated field operations using valid driving license.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">IT Support Specialist & Loan Processing Officer</div>
+                <div class="experience-company">Jefigs Credit</div>
+                <div class="experience-date">January 2023 - August 2023</div>
+                <div class="experience-description">
+                    Provided comprehensive IT support for office systems, applications, and infrastructure across all departments. Installed and configured business applications, 
+                    troubleshot hardware and software issues, and supported database systems ensuring data integrity. Streamlined loan processing workflows through process analysis 
+                    and technology optimization. Generated system reports and analytics for business intelligence. Trained staff on system usage and created instructional materials. 
+                    Maintained secure customer databases with strict adherence to data protection standards and coordinated field visits with clients.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Secondary Education</div>
+                <div class="experience-company">Chebara Secondary School</div>
+                <div class="experience-date">2015 - 2019</div>
+                <div class="experience-description">
+                    Completed Kenya Certificate of Secondary Education with Mean Grade B (Plain). Demonstrated strong performance in Mathematics (A), 
+                    Physics (B+), and English (B+). Developed foundational analytical and problem-solving skills that laid the groundwork for technical career. 
+                    Participated in science and technology clubs, fostering early interest in computer systems and technical problem-solving.
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="bio">
+                I'm always interested in hearing about new projects, opportunities, and collaborations. 
+                Whether you need a system programmer, network administrator, or workflow automation specialist, feel free to reach out!
+            </div>
+            <div class="contact-links">
+                <a href="mailto:johnofficial540@gmail.com" class="contact-link">Email: johnofficial540@gmail.com</a>
+                <a href="tel:+254706215461" class="contact-link">Phone: +254 706 215 461</a>
+                <a href="https://github.com/johnirungu" target="_blank" class="contact-link">GitHub</a>
+                <a href="https://linkedin.com/in/johnirungu" target="_blank" class="contact-link">LinkedIn</a>
+            </div>
+            <div class="bio" style="margin-top: 20px;">
+                <strong>Location:</strong> Githurai, Nairobi, Kenya<br>
+                <strong>Available for:</strong> On-site, Remote, or Hybrid positions<br>
+                <strong>Mobility:</strong> Valid driving license for field operations
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2024 John Irungu. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Enhanced navigation highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Function to update active nav link
+            function updateActiveNavLink() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Smooth scrolling for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL without page jump
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+            
+            // Update active nav link on scroll
+            window.addEventListener('scroll', updateActiveNavLink);
+            
+            // Initial call to set active nav link
+            updateActiveNavLink();
+        });
+    </script>
+</body>
+                  </html>
